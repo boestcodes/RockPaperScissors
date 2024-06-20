@@ -70,13 +70,13 @@ function playGame(){
     }
 
     if (humanScore>computerScore){
-        console.log(`You won with ${humanScore} Points`)
+        alert(`You won with ${humanScore} Points`)
     }
     else if (humanScore<computerScore){
-        console.log(`Computer won with ${computerScore} Points`)
+        alert(`Computer won with ${computerScore} Points`)
     }
     else{
-        console.log(`No Winner, you both have ${humanScore} Points`)
+        alert(`No Winner, you both have ${humanScore} Points`)
     }
 
 }
