@@ -1,12 +1,15 @@
 const btnRock = document.querySelector("#btnRock");
 const btnPaper = document.querySelector("#btnPaper");
 const btnScissors = document.querySelector("#btnScissors");
-const roundResults = document.querySelector("#roundResults")
-const pointsPlayer = document.querySelector("#pointsPlayer")
-const pointsCom = document.querySelector("#pointsCom")
+const roundResults = document.querySelector("#roundResults");
+const pointsPlayer = document.querySelector("#pointsPlayer");
+const pointsCom = document.querySelector("#pointsCom");
+const buttons = document.querySelectorAll("button");
 
 let humanScore = 0;
 let computerScore = 0;
+
+alert("Welcome to boestcodes R-P-S Game");
 
 function getComputerChoice() {
   let choice = Math.floor(Math.random() * 3) + 1;
@@ -69,14 +72,18 @@ if (humanScore > computerScore) {
 }
   */
 
-btnRock.addEventListener("click", () => {
-  playRound("rock", getComputerChoice());
-});
-
-btnPaper.addEventListener("click", () => {
-  playRound("paper", getComputerChoice());
-});
-
-btnScissors.addEventListener("click", () => {
-  playRound("scissors", getComputerChoice());
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    switch (button.id){
+      case "btnRock":
+        playRound("rock", getComputerChoice());
+        break;
+      case "btnPaper":
+        playRound("paper", getComputerChoice());
+        break;
+      case "btnScissors":
+        playRound("scissors", getComputerChoice());
+        break;
+    }
+  });
 });
