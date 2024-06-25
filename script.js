@@ -3,8 +3,12 @@ const btnPaper = document.querySelector("#btnPaper");
 const btnScissors = document.querySelector("#btnScissors");
 const roundResults = document.querySelector("#roundResults");
 const pointsPlayer = document.querySelector("#pointsPlayer");
-const pointsCom = document.querySelector("#pointsCom");
+const pointsComputer = document.querySelector("#pointsComputer");
 const buttons = document.querySelectorAll("button");
+const results = document.querySelector("#results")
+const rockImg = "images/rock.png";
+const paperImg = "images/copy.png";
+const scissorsImg = "images/scissors.png";
 
 let humanScore = 0;
 let computerScore = 0;
@@ -16,12 +20,15 @@ function getComputerChoice() {
 
   switch (choice) {
     case 1:
+      setRightChoice(rockImg);
       return "rock";
       break;
     case 2:
+      setRightChoice(paperImg);
       return "paper";
       break;
     case 3:
+      setRightChoice(scissorsImg);
       return "scissors";
       break;
     default:
@@ -35,7 +42,6 @@ function playRound(humanChoice, computerChoice) {
   } else if (humanChoice === "rock") {
     if (computerChoice === "scissors") {
       humanScore += 1;
-      alert("output")
       roundResults.textContent = `You win, ${humanChoice} beats ${computerChoice}`;
     } else {
       computerScore += 1;
@@ -58,8 +64,8 @@ function playRound(humanChoice, computerChoice) {
       roundResults.textContent = `You loose, ${computerChoice} beats ${humanChoice}`;
     }
   }
-  pointsCom.textContent = "Computer point: " + computerScore;
-  pointsPlayer.textContent = "Player point: " + humanScore;
+  pointsComputer.textContent = computerScore;
+  pointsPlayer.textContent = humanScore;
 }
 
 /*
@@ -77,13 +83,41 @@ buttons.forEach((button) => {
     switch (button.id){
       case "btnRock":
         playRound("rock", getComputerChoice());
+        setLeftChoice(rockImg);
         break;
       case "btnPaper":
         playRound("paper", getComputerChoice());
+        setLeftChoice(paperImg);
         break;
       case "btnScissors":
         playRound("scissors", getComputerChoice());
+        setLeftChoice(scissorsImg);
         break;
     }
   });
 });
+
+function setLeftChoice(choice){
+  if(results.childElementCount>1){
+    results.removeChild(results.childNodes[0])
+  }
+ 
+  const leftChoice = document.createElement("img")
+  leftChoice.setAttribute("src", choice)
+  leftChoice.setAttribute("height", "80px")
+  leftChoice.setAttribute("width", "80px")
+  results.insertAdjacentElement("afterbegin",leftChoice)
+  
+  
+}
+
+function setRightChoice(choice){
+  if(results.childElementCount>1){
+    results.removeChild(results.childNodes[2])
+  }
+  const rightChoice = document.createElement("img")
+  rightChoice.setAttribute("src", choice)
+  rightChoice.setAttribute("height", "80px")
+  rightChoice.setAttribute("width", "80px")
+  results.insertAdjacentElement("beforeend",rightChoice)
+}

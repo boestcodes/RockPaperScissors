@@ -1,0 +1,100 @@
+body{
+    background-color:bisque;
+    margin: 0px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1{
+    text-align: center;
+    color:cadetblue;
+}
+
+#resultContainer{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: auto;
+}
+
+#buttonContainer{
+    display:flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+button{
+    width: 100px;
+    height: 100px;
+    background-size: 90%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 5%;
+    box-shadow:  3px 3px rgb(12, 11, 5);
+}
+
+#btnRock{
+    background-image: url(images/rock.png);
+}
+
+#btnPaper{
+    background-image: url(images/copy.png);
+}
+
+#btnScissors{
+    background-image: url(images/scissors.png);
+}
+
+#results{
+    margin-top: 30px;
+    margin-bottom: auto;
+    display: flex;
+    width: 200px;
+    height: 100px;
+    border: black solid 1px;
+    border-radius: 5px;
+    background-color: aliceblue;
+    padding: 5px;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 24px;
+    box-shadow:  inset 2px 2px rgb(12, 11, 5);
+
+}
+
+#resultContainer p{
+    font-size: 36px;
+}
+
+#pointsPlayer{
+    margin-left:auto;
+    margin-right: 20px;
+    margin-top: auto;
+    
+}
+
+
+#pointsComputer{
+    margin-right:auto;
+    margin-left: 20px;
+    margin-top: auto;
+}
+
+#points{
+    text-align: center;
+    font-size: 24px;
+}
+
+footer{
+    background-color: cadetblue;
+    height: 30px;
+    padding-top: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+
