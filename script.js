@@ -1,7 +1,7 @@
 const btnRock = document.querySelector("#btnRock");
 const btnPaper = document.querySelector("#btnPaper");
 const btnScissors = document.querySelector("#btnScissors");
-
+const roundResults = document.querySelector("#roundResults")
 const pointsPlayer = document.querySelector("#pointsPlayer")
 const pointsCom = document.querySelector("#pointsCom")
 
@@ -22,36 +22,37 @@ function getComputerChoice() {
       return "scissors";
       break;
     default:
-      console.log("Error");
+      roundResults.textContent("Error");
   }
 }
 
 function playRound(humanChoice, computerChoice) {
   if (computerChoice === humanChoice) {
-    console.log("It's a tie");
+    roundResults.textContent = "It's a tie";
   } else if (humanChoice === "rock") {
     if (computerChoice === "scissors") {
       humanScore += 1;
-      console.log(`You win, ${humanChoice} beats ${computerChoice}`);
+      alert("output")
+      roundResults.textContent = `You win, ${humanChoice} beats ${computerChoice}`;
     } else {
       computerScore += 1;
-      console.log(`You loose, ${computerChoice} beats ${humanChoice}`);
+      roundResults.textContent = `You loose, ${computerChoice} beats ${humanChoice}`;
     }
   } else if (humanChoice === "paper") {
     if (computerChoice === "rock") {
       humanScore += 1;
-      console.log(`You win, ${humanChoice} beats ${computerChoice}`);
+      roundResults.textContent = `You win, ${humanChoice} beats ${computerChoice}`;
     } else {
       computerScore += 1;
-      console.log(`You loose, ${computerChoice} beats ${humanChoice}`);
+      roundResults.textContent = `You loose, ${computerChoice} beats ${humanChoice}`;
     }
   } else if (humanChoice === "scissors") {
     if (computerChoice === "paper") {
       humanScore += 1;
-      console.log(`You win, ${humanChoice} beats ${computerChoice}`);
+      roundResults.textContent = `You win, ${humanChoice} beats ${computerChoice}`;
     } else {
       computerScore += 1;
-      console.log(`You loose, ${computerChoice} beats ${humanChoice}`);
+      roundResults.textContent = `You loose, ${computerChoice} beats ${humanChoice}`;
     }
   }
   pointsCom.textContent = "Computer point: " + computerScore;
@@ -70,4 +71,12 @@ if (humanScore > computerScore) {
 
 btnRock.addEventListener("click", () => {
   playRound("rock", getComputerChoice());
+});
+
+btnPaper.addEventListener("click", () => {
+  playRound("paper", getComputerChoice());
+});
+
+btnScissors.addEventListener("click", () => {
+  playRound("scissors", getComputerChoice());
 });
