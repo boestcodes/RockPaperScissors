@@ -5,7 +5,9 @@ const roundResults = document.querySelector("#roundResults");
 const pointsPlayer = document.querySelector("#pointsPlayer");
 const pointsComputer = document.querySelector("#pointsComputer");
 const buttons = document.querySelectorAll("button");
-const results = document.querySelector("#results")
+const results = document.querySelector("#results");
+const sliderWins = document.querySelector("#sliderWins");
+const showRounds = document.querySelector("#showRounds");
 const rockImg = "images/rock.png";
 const paperImg = "images/copy.png";
 const scissorsImg = "images/scissors.png";
@@ -34,7 +36,16 @@ function getComputerChoice() {
     default:
       roundResults.textContent("Error");
   }
+ 
 }
+
+const resetPoints = () => {
+  computerScore = 0;
+  humanScore = 0;
+  pointsComputer.textContent = computerScore;
+  pointsPlayer.textContent = humanScore;
+}
+
 
 function playRound(humanChoice, computerChoice) {
   if (computerChoice === humanChoice) {
@@ -64,34 +75,38 @@ function playRound(humanChoice, computerChoice) {
       roundResults.textContent = `You loose, ${computerChoice} beats ${humanChoice}`;
     }
   }
+  
   pointsComputer.textContent = computerScore;
   pointsPlayer.textContent = humanScore;
+
+  if (humanScore >= sliderWins.value) {
+    roundResults.textContent = `!!! You won with ${humanScore} Points !!!`;
+    resetPoints()
+  }
+  if (computerScore >= sliderWins.value) {
+    roundResults.textContent = `!!! Computer won with ${computerScore} Points !!!`;
+    resetPoints()
+  } 
 }
 
-/*
-if (humanScore > computerScore) {
-  alert(`You won with ${humanScore} Points`);
-} else if (humanScore < computerScore) {
-  alert(`Computer won with ${computerScore} Points`);
-} else {
-  alert(`No Winner, you both have ${humanScore} Points`);
-}
-  */
+sliderWins.addEventListener("input", () => {
+  showRounds.textContent = sliderWins.value
+});
 
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
     switch (button.id){
       case "btnRock":
-        playRound("rock", getComputerChoice());
         setLeftChoice(rockImg);
+        playRound("rock", getComputerChoice());
         break;
       case "btnPaper":
-        playRound("paper", getComputerChoice());
         setLeftChoice(paperImg);
+        playRound("paper", getComputerChoice());  
         break;
       case "btnScissors":
-        playRound("scissors", getComputerChoice());
         setLeftChoice(scissorsImg);
+        playRound("scissors", getComputerChoice()); 
         break;
     }
   });
@@ -120,4 +135,7 @@ function setRightChoice(choice){
   rightChoice.setAttribute("height", "80px")
   rightChoice.setAttribute("width", "80px")
   results.insertAdjacentElement("beforeend",rightChoice)
+
+  
 }
+
