@@ -48,7 +48,6 @@ button{
 
 #results{
     margin-top: 30px;
-    margin-bottom: auto;
     display: flex;
     width: 200px;
     height: 100px;
@@ -84,6 +83,8 @@ button{
 #points{
     text-align: center;
     font-size: 24px;
+    margin-bottom: auto;
+    border: 1px red solid;
 }
 
 footer{
